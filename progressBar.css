@@ -55,7 +55,7 @@
 }
 
 .progress .progress-step.is-active {
-  color: #2183dd;
+  color: #9458FF;
 }
 
 .progress .progress-step.is-active:before {
@@ -65,12 +65,12 @@
 }
 
 .progress .progress-step.is-complete:before {
-  background: #2183dd;
+  background: #9458FF;
   border: 4px solid transparent;
 }
 
 .progress .progress-step.is-complete:after {
-  background: #2183dd;
+  background: #9458FF;
   -webkit-animation: nextStep 1s;
           animation: nextStep 1s;
   -webkit-animation-fill-mode: forwards;

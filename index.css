@@ -47,6 +47,18 @@ button {
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
 
+.button2 {
+  border: 2px solid #7C33FF;
+  background: none;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  color: #7C33FF;
+}
+
+.button2 img {
+  margin-right: 10px;
+}
+
 .row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -74,18 +86,6 @@ button {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 5px;
-}
-
-.btns .back {
-  border: 2px solid #7C33FF;
-  background: none;
-  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-  color: #7C33FF;
-}
-
-.btns .back img {
-  margin-right: 10px;
 }
 
 .btns .next {
@@ -131,8 +131,14 @@ button {
   position: relative;
 }
 
+.options .option p {
+  position: absolute;
+  bottom: 20px;
+  margin-top: 20px;
+}
+
 .options .selected {
-  background: #FCFCFC;
+  background: #EFEFEF;
   -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
           box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
   cursor: pointer;
@@ -140,7 +146,49 @@ button {
           transform: translateY(-10px);
 }
 
+.review .row {
+  position: relative;
+}
+
+.review .row h1 {
+  font-size: 30px;
+  color: #9458FF;
+}
+
+.review .row .hide {
+  position: absolute;
+  right: -200px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 10px 20px;
+}
+
+.review .row .hide img {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  margin: 0;
+}
+
 /* REVIEW */
+.review--nav .nav--items {
+  width: 70%;
+}
+
+.review--nav .nav--items .nav--option {
+  width: 120px;
+  height: 120px;
+  margin: 0;
+}
+
+.review--nav .nav--items .nav--option img {
+  width: 95px;
+}
+
+.review--nav .selec {
+  border: solid 2px #9458FF;
+}
+
 .review--display .title {
   margin: 20px 0;
   font-weight: 600;
@@ -154,17 +202,10 @@ button {
   margin-top: 20px;
 }
 
-.review--nav .nav--items {
-  width: 70%;
-}
-
-.review--nav .nav--items .nav--option {
-  width: 120px;
-  height: 120px;
-  margin: 0;
-}
-
-.review--nav .nav--items .nav--option img {
-  width: 95px;
+.review--display .user--answer {
+  background-color: white;
+  border-radius: 15px;
+  padding: 10px 20px;
+  margin-top: 10px;
 }
 /*# sourceMappingURL=index.css.map */
