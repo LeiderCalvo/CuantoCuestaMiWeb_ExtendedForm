@@ -12,7 +12,7 @@
 
 html body {
   width: 100%;
-  background-color: #FFF;
+  background-color: #d4f1ff;
   text-align: center;
 }
 
@@ -96,15 +96,7 @@ button {
   margin-left: 10px;
 }
 
-/* REVIEW */
-.review--display .title {
-  margin: 20px 0;
-  font-weight: 600;
-  font-size: 36px;
-  line-height: 40px;
-}
-
-.review--display .title .options {
+.options {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
@@ -115,7 +107,7 @@ button {
   width: 80%;
 }
 
-.review--display .title .options .option {
+.options .option {
   background: #FCFCFC;
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
@@ -139,18 +131,40 @@ button {
   position: relative;
 }
 
-.review--display .title .options .option .option--name {
-  position: absolute;
-  bottom: 20px;
-  margin-top: 20px;
-}
-
-.review--display .title .options .selected {
+.options .selected {
   background: #FCFCFC;
   -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
           box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
   cursor: pointer;
   -webkit-transform: translateY(-10px);
           transform: translateY(-10px);
+}
+
+/* REVIEW */
+.review--display .title {
+  margin: 20px 0;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 40px;
+}
+
+.review--display .options .option .option--name {
+  position: absolute;
+  bottom: 20px;
+  margin-top: 20px;
+}
+
+.review--nav .nav--items {
+  width: 70%;
+}
+
+.review--nav .nav--items .nav--option {
+  width: 120px;
+  height: 120px;
+  margin: 0;
+}
+
+.review--nav .nav--items .nav--option img {
+  width: 95px;
 }
 /*# sourceMappingURL=index.css.map */

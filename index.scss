@@ -9,7 +9,7 @@
 
 html body {
     width: 100%;
-    background-color: #FFF;
+    background-color: #d4f1ff;
     text-align: center;
 }
 
@@ -66,45 +66,63 @@ button {
     }
 }
 
-/* REVIEW */
-.review--display .title {
-    margin: 20px 0;
-    font-weight: 600;
-    font-size: 36px;
-    line-height: 40px;
+.options {
+    justify-content: space-evenly;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    width: 80%;
     
-    .options {
-        justify-content: space-evenly;
-        margin-top: 20px;
-        margin-bottom: 40px;
-        flex-wrap: wrap;
-        width: 80%;
+    .option {
+        background: #FCFCFC;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        width: 238px;
+        height: 245px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 0 15px;
+        position: relative;
         
-        .option {
-            background: #FCFCFC;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-            border-radius: 20px;
-            width: 238px;
-            height: 245px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            margin: 0 15px;
-            position: relative;
-            
-            .option--name{
-                position: absolute;
-                bottom: 20px;
-                margin-top: 20px;
-            }
-        }
+    }
+    
+    .selected {
+        background: #FCFCFC;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
+        cursor: pointer;
+        transform: translateY(-10px);
+    }
+}
 
-        .selected {
-            background: #FCFCFC;
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
-            cursor: pointer;
-            transform: translateY(-10px);
+/* REVIEW */
+.review--display {
+    .title {
+        margin: 20px 0;
+        font-weight: 600;
+        font-size: 36px;
+        line-height: 40px;
+    }
+
+    .options .option .option--name{
+        position: absolute;
+        bottom: 20px;
+        margin-top: 20px;
+    }
+}
+
+.review--nav {
+    .nav--items{
+        width: 70%;
+        .nav--option{
+            width: 120px;
+            height: 120px;
+            margin: 0;
+            
+            img{
+                width: 95px;
+            }
         }
     }
 }

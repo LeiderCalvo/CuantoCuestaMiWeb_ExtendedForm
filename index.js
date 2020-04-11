@@ -50,22 +50,83 @@ const quesionnaire = [
 ]
 
 window.addEventListener('load', function(){
-    var reviewOptions = document.querySelector('.options');
+    var reviewOptions = document.querySelector('.display--items'),
+        title = document.querySelector('.title'),
+        progressBarSteps = [],
+        userPrevResponse = null,
+        options = [],
+        optionsImgs = [],
+        optionsPs = [];
 
-    function getDocument (){
+    ( () => {
+        //get previous answers
         fetch(`https://us-central1-quote-db5a2.cloudfunctions.net/widgets/getUserDocument?email=leidercalvo@gmail.com`)
         .then( response => response.json() )
-        .then( r => console.log(r) );
-    }
-    getDocument();
-
-    //createOptionsFields
-    ( () => {
+        .then( r => userPrevResponse = r );
+            
+        //create OptionsFields
         [... new Array(4)].forEach( x => {
-            var optionFormat = document.createElement( 'div' );
+            var optionFormat = document.createElement( 'div' ),
+                imgFormat = document.createElement( 'img' ),
+                pFormat = document.createElement( 'p' );
+
             optionFormat.classList.add('option');
-            optionFormat.innerHTML = `<img src="./imgs/11.svg" alt="img" class='img icon'><p class="option--name">Name</p>` ;
+            imgFormat.classList.add('option--img');
+            pFormat.classList.add('option--name');
+
+            optionFormat.appendChild(imgFormat);
+            optionFormat.appendChild(pFormat);
             reviewOptions.appendChild( optionFormat );
-        })
+
+            options.push( optionFormat );
+            optionsImgs.push( imgFormat );
+            optionsPs.push( pFormat );
+        });
+        
+        [... new Array(7)].forEach( (x, i) => {
+            //Create options navigation
+            var navItemFormat = document.createElement( 'div' );
+            navItemFormat.classList.add('option');
+            navItemFormat.classList.add('nav--option');
+            navItemFormat.innerHTML = `<img src="./imgs/${(i+1)+''+2}.svg" alt="img">`;
+            navItemFormat.addEventListener('click', ()=>next(i+1));
+            document.querySelector('.nav--items').appendChild( navItemFormat );
+
+            //create progress bar steps
+            var progressStep = document.createElement( 'div' );
+            progressStep.classList.add('progress-step');
+            progressStep.innerHTML = `${(i+1)}` ;
+            document.querySelector('.progress').appendChild( progressStep );
+            progressBarSteps.push( progressStep );
+        });
+
+        next(1);
     } )();
+
+
+    function next(pos) {
+        progressBarSteps.forEach( p => {
+            p.classList.remove("is-active");
+            p.classList.remove("is-complete");
+        });
+
+        [... new Array(pos)].forEach( (step, i) => {
+            if(i === pos-1){
+                progressBarSteps[i].classList.add("is-active");
+                return;
+            }
+            progressBarSteps[i].classList.add("is-complete");
+        });
+
+        updateInfo(pos-1);
+    }
+
+    function updateInfo(pos) {
+        title.innerHTML = quesionnaire[pos].question;
+        quesionnaire[pos].options.forEach( (option, i) => {
+            if(option !== '') optionsImgs[i].src = './imgs/'+(pos+1)+''+(i+1)+'.svg';
+            option === '' ? options[i].style.display = 'none' : options[i].style.display = 'flex';
+            optionsPs[i].innerHTML = option;
+        });
+    }
 });
