@@ -222,4 +222,86 @@ button {
 .review .review--display .btns {
   margin-bottom: 0;
 }
+
+.detInfo--display > article {
+  width: 80% !important;
+  text-align: left;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.detInfo--display > article h3 {
+  color: #6C63FF;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.detInfo--display > article p {
+  color: #2B303A;
+  font-size: 18px;
+  width: 65%;
+  margin-bottom: 10px;
+}
+
+.detInfo--display .row {
+  width: 100%;
+}
+
+.detInfo--display .row > * {
+  width: 45%;
+}
+
+.detInfo--display .row > * * {
+  width: 100%;
+}
+
+.detInfo--display textarea, .detInfo--display input[type=text] {
+  background: #FAFAFA;
+  -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px 0;
+}
+
+.detInfo--display textarea {
+  height: 200px;
+}
+
+.detInfo--display .generalGuideline textarea {
+  margin-top: 20px;
+}
+
+.detInfo--display .referenceWebsites .row {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.detInfo--display .referenceWebsites .row .website input {
+  margin-bottom: 20px;
+}
+
+.detInfo--display .referenceWebsites button {
+  border-radius: 20px;
+  margin-top: 20px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.detInfo--display .language .main {
+  width: 35%;
+  background: #FAFAFA;
+  -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px 0;
+}
 /*# sourceMappingURL=index.css.map */

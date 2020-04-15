@@ -70,6 +70,7 @@ window.addEventListener('load', function(){
         .then( r => { 
             userPrevResponse = r;
             next(1, true);
+            next(1);
         });
             
         //create OptionsFields
