@@ -137,7 +137,13 @@ window.addEventListener('load', function(){
             barSteps[i].classList.add("is-complete");
         });
         isReview? revProgressBarStep = pos : detInfoProgressBarStep = pos;
-        isReview && updateInfo_Review(pos-1);
+        isReview? updateInfo_Review(pos-1) : updateInfo_DetailedInfo(pos-1);
+    }
+
+    const detailedForms = document.querySelectorAll('.stepForm');
+    function updateInfo_DetailedInfo(pos){
+        detailedForms.forEach( form => form.style.display = 'none');
+        detailedForms[detInfoProgressBarStep-1].style.display = 'flex';
     }
 
     var revTitle = document.querySelector('.title'),
