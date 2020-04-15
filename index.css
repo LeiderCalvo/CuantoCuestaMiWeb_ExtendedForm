@@ -12,7 +12,6 @@
 
 html body {
   width: 100%;
-  background-color: #d4f1ff;
   text-align: center;
 }
 
@@ -146,6 +145,31 @@ button {
           transform: translateY(-10px);
 }
 
+.nav .nav--items {
+  width: 70%;
+}
+
+.nav .nav--items .nav--option {
+  width: 120px;
+  height: 120px;
+  margin: 0;
+}
+
+.nav .nav--items .nav--option img {
+  width: 95px;
+}
+
+.nav .selec {
+  border: solid 2px #9458FF;
+}
+
+.review {
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  background-color: #FAFAFA;
+  padding: 50px 0;
+}
+
 .review .row {
   position: relative;
 }
@@ -170,42 +194,32 @@ button {
   margin: 0;
 }
 
-/* REVIEW */
-.review--nav .nav--items {
-  width: 70%;
+.review .row .hide .cero {
+  -webkit-transform: rotate(-90deg) !important;
+          transform: rotate(-90deg) !important;
 }
 
-.review--nav .nav--items .nav--option {
-  width: 120px;
-  height: 120px;
-  margin: 0;
-}
-
-.review--nav .nav--items .nav--option img {
-  width: 95px;
-}
-
-.review--nav .selec {
-  border: solid 2px #9458FF;
-}
-
-.review--display .title {
+.review .review--display .title {
   margin: 20px 0;
   font-weight: 600;
   font-size: 36px;
   line-height: 40px;
 }
 
-.review--display .options .option .option--name {
+.review .review--display .options .option .option--name {
   position: absolute;
   bottom: 20px;
   margin-top: 20px;
 }
 
-.review--display .user--answer {
+.review .review--display .user--answer {
   background-color: white;
   border-radius: 15px;
   padding: 10px 20px;
   margin-top: 10px;
+}
+
+.review .review--display .btns {
+  margin-bottom: 0;
 }
 /*# sourceMappingURL=index.css.map */

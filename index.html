@@ -19,11 +19,11 @@
             <h1>Review Previous Answers</h1>
             <button class='button2 row hide'>Hide <img src="./imgs/backArrow.svg" alt=""></button>
         </div>
-        <section class="review--nav">
-            <div class="progress">
-                <div class="progress-track"></div>
+        <section class="nav review--nav">
+            <div class="progress review--progress">
+                <div class="progress-track review--progress--track"></div>
             </div>
-            <nav class="row options nav--items"></nav>
+            <nav class="row options nav--items review--nav--items"></nav>
         </section>
         <section class="review--display">
             <h1 class="title">Title</h1>
@@ -31,8 +31,23 @@
             <h4>You Choose</h4>
             <p class="user--answer">answer</p>
             <div class="btns row">
-                <button class="button2 back"><img src="./imgs/backArrow.svg" alt="">Atrás</button>
-                <button class="next">Siguiente<img src="./imgs/nextArrow.svg" alt=""></button>
+                <button id='rev--back' class="button2 back"><img src="./imgs/backArrow.svg" alt="">Atrás</button>
+                <button id='rev--next' class="next">Siguiente<img src="./imgs/nextArrow.svg" alt=""></button>
+            </div>
+        </section>
+    </article>
+
+    <article class="detInfo">
+        <section class="nav detInfo--nav">
+            <div class="progress detInfo--progress">
+                <div class="progress-track detInfo--progress--track"></div>
+            </div>
+            <nav class="row options nav--items detInfo--nav--items"></nav>
+        </section>
+        <section class="detInfo--display">
+            <div class="btns row">
+                <button id='detInfo--back' class="button2 back"><img src="./imgs/backArrow.svg" alt="">Atrás</button>
+                <button id='detInfo--next' class="next">Siguiente<img src="./imgs/nextArrow.svg" alt=""></button>
             </div>
         </section>
     </article>

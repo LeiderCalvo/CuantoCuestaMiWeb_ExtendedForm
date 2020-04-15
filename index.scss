@@ -9,7 +9,6 @@
 
 html body {
     width: 100%;
-    background-color: #d4f1ff;
     text-align: center;
 }
 
@@ -102,29 +101,7 @@ button {
     }
 }
 
-.review .row {
-    position: relative;
-
-    h1 {
-        font-size: 30px;
-        color: #9458FF
-    }
-
-    .hide {
-        img{
-            transform: rotate(90deg);
-            margin: 0;
-        }
-
-        position: absolute;
-        right: -200px;
-        width: fit-content;
-        padding: 10px 20px;
-    }
-}
-
-/* REVIEW */
-.review--nav {
+.nav {
     .nav--items{
         width: 70%;
         .nav--option{
@@ -143,25 +120,58 @@ button {
     }
 }
 
-.review--display {
-    .title {
-        margin: 20px 0;
-        font-weight: 600;
-        font-size: 36px;
-        line-height: 40px;
+.review {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    background-color: #FAFAFA;
+    padding: 50px 0;
+    .row {
+        position: relative;
+
+        h1 {
+            font-size: 30px;
+            color: #9458FF
+        }
+
+        .hide {
+            img{
+                transform: rotate(90deg);
+                margin: 0;
+            }
+
+            .cero {
+                transform: rotate(-90deg) !important;
+            }
+
+            position: absolute;
+            right: -200px;
+            width: fit-content;
+            padding: 10px 20px;
+        }
     }
 
-    .options .option .option--name{
-        position: absolute;
-        bottom: 20px;
-        margin-top: 20px;
-    }
+    .review--display {
+        .title {
+            margin: 20px 0;
+            font-weight: 600;
+            font-size: 36px;
+            line-height: 40px;
+        }
 
-    .user--answer {
-        background-color: white;
-        border-radius: 15px;
-        padding: 10px 20px;
-        margin-top: 10px;
+        .options .option .option--name{
+            position: absolute;
+            bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .user--answer {
+            background-color: white;
+            border-radius: 15px;
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+
+        .btns{
+            margin-bottom: 0;
+        }
     }
 }
-

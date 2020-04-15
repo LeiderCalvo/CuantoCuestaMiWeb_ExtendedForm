@@ -48,19 +48,20 @@ const quesionnaire = [
         options: ['Sí, lo necesito', 'No, yo me encargo', 'No lo sé', '']
     }
 ]
+const detailedInformationSteps = ['General Guideline', 'Reference Website', 'Languages', 'Products or Services', 'Sections', 'External Data'];
 
 window.addEventListener('load', function(){
-    var  userPrevResponse = null,
-        title = document.querySelector('.title'),
-        progressBarStep = 0,
-        progressBarSteps = [],
-        
-        reviewOptions = document.querySelector('.display--items'),
-        userAnswer = document.querySelector('.user--answer'),
-        navItems = [],
-        options = [],
-        optionsImgs = [],
-        optionsPs = [];
+    var userPrevResponse = null,
+        revProgressBarStep = 0,
+        revProgressBarSteps = [],
+        revNavItems = [],
+        revOptions = [],
+        revOptionsImgs = [],
+        revOptionsPs = [],
+
+        detInfoProgressBarStep = 0,
+        detInfoProgressBarSteps = [],
+        detInfoNavItems = [];
 
     ( () => {
         //get previous answers
@@ -68,7 +69,7 @@ window.addEventListener('load', function(){
         .then( response => response.json() )
         .then( r => { 
             userPrevResponse = r;
-            next(1);
+            next(1, true);
         });
             
         //create OptionsFields
@@ -83,36 +84,44 @@ window.addEventListener('load', function(){
 
             optionFormat.appendChild(imgFormat);
             optionFormat.appendChild(pFormat);
-            reviewOptions.appendChild( optionFormat );
+            document.querySelector('.display--items').appendChild( optionFormat );
 
-            options.push( optionFormat );
-            optionsImgs.push( imgFormat );
-            optionsPs.push( pFormat );
+            revOptions.push( optionFormat );
+            revOptionsImgs.push( imgFormat );
+            revOptionsPs.push( pFormat );
         });
         
-        [... new Array(7)].forEach( (x, i) => {
+        createNavItems(7, true);
+        createNavItems(detailedInformationSteps.length);
+
+    } )();
+
+    function createNavItems(amount, isReview) {
+        [... new Array(amount)].forEach( (x, i) => {
             //Create options navigation
             var navItemFormat = document.createElement( 'div' );
             navItemFormat.classList.add('option');
             navItemFormat.classList.add('nav--option');
-            navItemFormat.innerHTML = `<img src="./imgs/${(i+1)+''+2}.svg" alt="img">`;
-            navItemFormat.addEventListener('click', ()=>next(i+1));
-            document.querySelector('.nav--items').appendChild( navItemFormat );
-            navItems.push( navItemFormat );
+            navItemFormat.innerHTML = isReview? `<img src="./imgs/${(i+1)+''+2}.svg" alt="img">` : detailedInformationSteps[i];
+            navItemFormat.addEventListener( 'click', () => next(i+1,isReview) );
+            document.querySelector(isReview? '.review--nav--items' : '.detInfo--nav--items').appendChild( navItemFormat );
+            isReview? revNavItems.push( navItemFormat ) : detInfoNavItems.push( navItemFormat );
 
             //create progress bar steps
             var progressStep = document.createElement( 'div' );
             progressStep.classList.add('progress-step');
             progressStep.innerHTML = `${(i+1)}` ;
-            document.querySelector('.progress').appendChild( progressStep );
-            progressBarSteps.push( progressStep );
+            document.querySelector(isReview?'.review--progress':'.detInfo--progress').appendChild( progressStep );
+            isReview? revProgressBarSteps.push( progressStep ):detInfoProgressBarSteps.push( progressStep );
         });
+    }
 
-    } )();
 
+    function next(pos, isReview) {
+        let barSteps = isReview? revProgressBarSteps : detInfoProgressBarSteps;
+        let navItems = isReview? revNavItems : detInfoNavItems;
 
-    function next(pos) {
-        progressBarSteps.forEach( (p, i) => {
+        barSteps.forEach( (p, i) => {
             p.classList.remove("is-active");
             p.classList.remove("is-complete");
             navItems[i].classList.remove("selec");
@@ -120,26 +129,28 @@ window.addEventListener('load', function(){
 
         [... new Array(pos)].forEach( (step, i) => {
             if(i === pos-1){
-                progressBarSteps[i].classList.add("is-active");
+                barSteps[i].classList.add("is-active");
                 navItems[i].classList.add("selec");
                 return;
             }
-            progressBarSteps[i].classList.add("is-complete");
+            barSteps[i].classList.add("is-complete");
         });
-        progressBarStep = pos;
-        updateInfo(pos-1);
+        isReview? revProgressBarStep = pos : detInfoProgressBarStep = pos;
+        isReview && updateInfo_Review(pos-1);
     }
 
-    function updateInfo(pos) {
-        title.innerHTML = quesionnaire[pos].question;
-        userAnswer.innerHTML = ObjectToString(userPrevResponse.answers[pos]);
+    var revTitle = document.querySelector('.title'),
+        revUserAnswer = document.querySelector('.user--answer');
+    function updateInfo_Review(pos) {
+        revTitle.innerHTML = quesionnaire[pos].question;
+        revUserAnswer.innerHTML = ObjectToString(userPrevResponse.answers[pos]);
         
         quesionnaire[pos].options.forEach( (option, i) => {
-            options[i].classList.remove('selected');
-            checkOptionSelected(pos, option, options[i]);
-            if(option !== '') optionsImgs[i].src = './imgs/'+(pos+1)+''+(i+1)+'.svg';
-            option === '' ? options[i].style.display = 'none' : options[i].style.display = 'flex';
-            optionsPs[i].innerHTML = option;
+            revOptions[i].classList.remove('selected');
+            checkOptionSelected(pos, option, revOptions[i]);
+            if(option !== '') revOptionsImgs[i].src = './imgs/'+(pos+1)+''+(i+1)+'.svg';
+            option === '' ? revOptions[i].style.display = 'none' : revOptions[i].style.display = 'flex';
+            revOptionsPs[i].innerHTML = option;
         });
     }
 
@@ -159,11 +170,34 @@ window.addEventListener('load', function(){
         return text.join(' -- ');
     }
 
-    document.querySelector('.next').addEventListener('click', ()=> {
-        if(progressBarStep+1 <= userPrevResponse.answers.length) next(progressBarStep+1);
+    const btnHide = document.querySelector('.hide');
+    const revNav = document.querySelector('.review--nav');
+    const revDisp = document.querySelector('.review--display');
+    btnHide.addEventListener('click', ()=> {
+        if(btnHide.innerText === 'Hide'){
+            btnHide.innerHTML = 'Show <img class="cero" src="./imgs/backArrow.svg" alt="">';
+            revNav.style.display = 'none';
+            revDisp.style.display = 'none';
+        }else {
+            btnHide.innerHTML = 'Hide <img src="./imgs/backArrow.svg" alt="">';
+            revNav.style.display = 'flex';
+            revDisp.style.display = 'flex';
+        }
     });
 
-    document.querySelector('.back').addEventListener('click', ()=> {
-        if(progressBarStep-1 > 0) next(progressBarStep-1);
+    document.querySelector('#rev--next').addEventListener('click', ()=> {
+        if(revProgressBarStep+1 <= userPrevResponse.answers.length) next(revProgressBarStep+1, true);
+    });
+
+    document.querySelector('#rev--back').addEventListener('click', ()=> {
+        if(revProgressBarStep-1 > 0) next(revProgressBarStep-1, true);
+    });
+
+    document.querySelector('#detInfo--next').addEventListener('click', ()=> {
+        if(detInfoProgressBarStep+1 <= 6) next(detInfoProgressBarStep+1);
+    });
+
+    document.querySelector('#detInfo--back').addEventListener('click', ()=> {
+        if(detInfoProgressBarStep-1 > 0) next(detInfoProgressBarStep-1);
     });
 });

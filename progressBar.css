@@ -12,7 +12,7 @@
   width: 100%;
   height: 5px;
   background-color: #dfe3e4;
-  z-index: -1;
+  z-index: 0;
 }
 
 .progress .progress-step {
@@ -51,7 +51,7 @@
   transition: width 1s ease-in;
   height: 5px;
   background: #dfe3e4;
-  z-index: -1;
+  z-index: 0;
 }
 
 .progress .progress-step.is-active {
