@@ -75,12 +75,14 @@
                     </select>
                 </div>
                 <div class="secondary">
+                    <h3>Secondary Languages</h3>
                     <div class="row">
                         <input type="checkbox" name="English">
                     </div>
                     <div class="row">
                         <p>Others?</p>
-                        <input type="text">
+                        <input type="text" placeholder="Write here if not listed
+                        ">
                     </div>
                 </div>
             </article>
@@ -94,17 +96,18 @@
             <article class="sections">
                 <h3>Sections</h3>
                 <p>Nos indicaste que necesitas realizar (número secciones) secciones en tu página, menciona qué te gustaría ver en cada una de ellas. Recuerda que puedes editar el número de secciones arriba (?).</p>
-                <h5>1/ 10 (#Bloques Quote)</h5>
+                <h5>1 / 10 (#Bloques Quote)</h5>
                 <div class="row">
                     <div class="description">
-                        <p>Description, instructions:</p>
-                        <input type="text" placeholder="I like when they show their projects with a movement in the background images(?)">
+                        <h5>Description, instructions:</h5>
+                        <textarea type="text" placeholder="I like when they show their projects with a movement in the background images(?)"></textarea>
                     </div>
                     <div class="visualRef">
-                        <p>Visual Reference</p>
+                        <h5>Visual Reference</h5>
                         <input type="file">
                     </div>
                 </div>
+                <button>add section</button>
                 <button class="next">next</button>
                 <button class="back">back</button>
             </article>
@@ -116,16 +119,16 @@
                         <h3>Payment Gateway</h3>
                         <div class="website">
                             <h5>Link</h5>
-                            <input type="text">
+                            <input type="text" placeholder="www.goconsulting.com">
                             <h5>Description, instructions:</h5>
-                            <input type="text" placeholder="I like when they show their projects with a movement in the background images(?)">
+                            <textarea type="text" placeholder="I like when they show their projects with a movement in the background images(?)"></textarea>
                         </div>
-                        <button>Add Website</button>
+                        <button class="button2">Add Website +</button>
                     </div>
 
                     <div class="integrations">
                         <h3>Integrations</h3>
-                        <input type="text" placeholder="I need a market place where my dfas (?)">
+                        <textarea type="text" placeholder="I need a market place where my dfas (?)"></textarea>
                         <input type="file">
                     </div>
                 </div>
@@ -134,25 +137,25 @@
                     <h3>User Management</h3>
                     <p>Qué quieres que vean tus usuarios loggeados exclusivamente?</p>
                     <div class="row">
-                        <input type="text" placeholder="I need a market place where my dfas (?)">
+                        <textarea type="text" placeholder="I need a market place where my dfas (?)"></textarea>
                         <input type="file">
                     </div>
 
                     <p>Qué tipo de suscripciones tendrían?</p>
                     <div class="row">
-                        <input type="text" placeholder="I need a market place where my dfas (?)">
+                        <textarea type="text" placeholder="I need a market place where my dfas (?)"></textarea>
                         <input type="file">
                     </div>
                     
                     <p>Tienes usuarios previos a importar?</p>
                     <div class="row">
-                        <input type="text" placeholder="I need a market place where my dfas (?)">
+                        <textarea type="text" placeholder="I need a market place where my dfas (?)"></textarea>
                         <input type="file">
                     </div>
                 </div>
             </article>
 
-            <div class="btns row">
+            <div class="btns row" name='btnsNav'>
                 <button id='detInfo--back' class="button2 back"><img src="./imgs/backArrow.svg" alt="">Atrás</button>
                 <button id='detInfo--next' class="next">Siguiente<img src="./imgs/nextArrow.svg" alt=""></button>
             </div>

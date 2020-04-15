@@ -2,10 +2,16 @@
     background: #FAFAFA;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
     border-radius: 6px;
-    border: none;
     padding: 10px 20px;
-    margin: 5px 0;
 } 
+
+@mixin center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 
 *{
     margin: 0;
@@ -207,7 +213,7 @@ button {
         }
     }
 
-    .row{
+    .row:not([name="btnsNav"]){
         width: 100%;
         &>*{
             width: 45%;
@@ -217,8 +223,10 @@ button {
         }
     }
 
-    textarea, input[type=text] {
+    textarea, input[type=text], select {
         @include background();
+        border: none;
+        margin: 5px 0;
     }
 
     textarea{
@@ -251,7 +259,69 @@ button {
     .language{
         .main{
             width: 35%;
+            height: 200px;
             @include background();
+            margin-right: 5%;
+            @include center();
+        }
+        .secondary {
+            width: 60%;
+            height: 200px;
+            @include background();
+            @include center();
+
+            .row{
+                width: 80%;
+                flex-direction: row;
+            }
+
+            div:last-child{
+                p{
+                    width: fit-content;
+                    margin-bottom: 0;
+                }
+                input{
+                    width: 70%;
+                }
+            }
+        }
+    }
+
+    .sections{
+        .row{
+            margin-top: 20px;
+        }
+    }
+
+    .externalData{
+        .row{
+            flex-wrap: wrap;
+            margin-top: 20px;
+            align-items: flex-start;
+
+            &>div {
+                margin-bottom: 40px;
+            }
+            
+            .payment {
+                .website input {
+                    margin-bottom: 20px; 
+                }
+
+                button {
+                    width: fit-content;
+                    border-radius: 20px;
+                    margin-top: 10px;
+                    align-self: center;
+                }
+            }
+        }
+
+        .userManagement{
+            width: 100%;
+            p{
+                margin-top: 20px;
+            }
         }
     }
 

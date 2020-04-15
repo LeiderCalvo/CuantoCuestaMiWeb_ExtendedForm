@@ -247,25 +247,25 @@ button {
   margin-bottom: 10px;
 }
 
-.detInfo--display .row {
+.detInfo--display .row:not([name="btnsNav"]) {
   width: 100%;
 }
 
-.detInfo--display .row > * {
+.detInfo--display .row:not([name="btnsNav"]) > * {
   width: 45%;
 }
 
-.detInfo--display .row > * * {
+.detInfo--display .row:not([name="btnsNav"]) > * * {
   width: 100%;
 }
 
-.detInfo--display textarea, .detInfo--display input[type=text] {
+.detInfo--display textarea, .detInfo--display input[type=text], .detInfo--display select {
   background: #FAFAFA;
   -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
           box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
   border-radius: 6px;
-  border: none;
   padding: 10px 20px;
+  border: none;
   margin: 5px 0;
 }
 
@@ -296,12 +296,109 @@ button {
 
 .detInfo--display .language .main {
   width: 35%;
+  height: 200px;
   background: #FAFAFA;
   -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
           box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
   border-radius: 6px;
-  border: none;
   padding: 10px 20px;
-  margin: 5px 0;
+  margin-right: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.detInfo--display .language .secondary {
+  width: 60%;
+  height: 200px;
+  background: #FAFAFA;
+  -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  padding: 10px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.detInfo--display .language .secondary .row {
+  width: 80%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.detInfo--display .language .secondary div:last-child p {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-bottom: 0;
+}
+
+.detInfo--display .language .secondary div:last-child input {
+  width: 70%;
+}
+
+.detInfo--display .sections .row {
+  margin-top: 20px;
+}
+
+.detInfo--display .externalData .row {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 20px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.detInfo--display .externalData .row > div {
+  margin-bottom: 40px;
+}
+
+.detInfo--display .externalData .row .payment .website input {
+  margin-bottom: 20px;
+}
+
+.detInfo--display .externalData .row .payment button {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 20px;
+  margin-top: 10px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.detInfo--display .externalData .userManagement {
+  width: 100%;
+}
+
+.detInfo--display .externalData .userManagement p {
+  margin-top: 20px;
 }
 /*# sourceMappingURL=index.css.map */
