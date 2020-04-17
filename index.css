@@ -341,6 +341,7 @@ button {
 .detInfo--display .files--loaded .document {
   width: 32% !important;
   margin-bottom: 5px;
+  min-width: 250px;
 }
 
 .detInfo--display .files--loaded .document img {
@@ -355,6 +356,17 @@ button {
   width: 70%;
   height: 1.5em;
   overflow: hidden;
+}
+
+.detInfo--display .files--loaded .document div p {
+  width: 70%;
+  padding: 5px 10px;
+}
+
+.detInfo--display .files--loaded .document .loading {
+  background-color: #f26529;
+  border-radius: 8px;
+  color: white;
 }
 
 .detInfo--display .generalGuideline textarea, .detInfo--display .generalGuideline .file--loader {
@@ -448,6 +460,9 @@ button {
 
 .detInfo--display .sections .row {
   margin-top: 20px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .detInfo--display .externalData .row {

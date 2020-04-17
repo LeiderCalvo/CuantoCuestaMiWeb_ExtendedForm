@@ -215,6 +215,7 @@ button {
 
     .row:not([name="btnsNav"]){
         width: 100%;
+
         &>*:not(img){
             width: 45%;
             *:not(img){
@@ -263,6 +264,7 @@ button {
         .document{
             width: 32% !important;
             margin-bottom: 5px;
+            min-width: 250px;
             //height: 60px;
             //overflow: hidden;
 
@@ -274,6 +276,17 @@ button {
                     height: 1.5em;
                     overflow: hidden;
                 }
+
+                p{
+                    width: 70%;
+                    padding: 5px 10px;
+                }
+            }
+
+            .loading{
+                background-color: #f26529;
+                border-radius: 8px;
+                color: white;
             }
         }
     }
@@ -335,6 +348,7 @@ button {
     .sections{
         .row{
             margin-top: 20px;
+            align-items: flex-start;
         }
     }
 
