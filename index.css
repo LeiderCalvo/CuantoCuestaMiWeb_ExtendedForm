@@ -251,11 +251,11 @@ button {
   width: 100%;
 }
 
-.detInfo--display .row:not([name="btnsNav"]) > * {
+.detInfo--display .row:not([name="btnsNav"]) > *:not(img) {
   width: 45%;
 }
 
-.detInfo--display .row:not([name="btnsNav"]) > * * {
+.detInfo--display .row:not([name="btnsNav"]) > *:not(img) *:not(img) {
   width: 100%;
 }
 
@@ -269,11 +269,95 @@ button {
   margin: 5px 0;
 }
 
-.detInfo--display textarea {
+.detInfo--display textarea, .detInfo--display .file--loader {
   height: 200px;
 }
 
-.detInfo--display .generalGuideline textarea {
+.detInfo--display .file--loader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  border: 2px dashed #BBBBBB;
+  -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  padding: 10px 20px;
+}
+
+.detInfo--display .file--loader input {
+  width: -webkit-fit-content !important;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.detInfo--display .file--loader input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.detInfo--display .file--loader input::before {
+  position: absolute;
+  margin: -10px 0 0 50px;
+  content: 'Pick Files';
+  border: 2px solid #7C33FF;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 19px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.detInfo--display .files--loaded {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.detInfo--display .files--loaded .document {
+  width: 32% !important;
+  margin-bottom: 5px;
+}
+
+.detInfo--display .files--loaded .document img {
+  width: 60px;
+}
+
+.detInfo--display .files--loaded .document div {
+  margin-left: 10px;
+}
+
+.detInfo--display .files--loaded .document div h5 {
+  width: 70%;
+  height: 1.5em;
+  overflow: hidden;
+}
+
+.detInfo--display .generalGuideline textarea, .detInfo--display .generalGuideline .file--loader {
   margin-top: 20px;
 }
 

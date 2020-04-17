@@ -49,9 +49,13 @@
                 <h3>General Guideline</h3>
                 <p>Here you can explain your general requirements, or you can explain in a document and upload it with the following button.</p>
                 <div class="row">
-                    <textarea placeholder="I need a market place where my dfas (?)"></textarea>
-                    <input type="file" id="">
+                    <textarea data-pos='0' class='ta' placeholder="I need a market place where my dfas (?)"></textarea>
+                    <div class="file--loader">
+                        <p>Attach files here. Theres 2 files max limit.</p>
+                        <input data-step='' type="file" class="inp_loader">
+                    </div>
                 </div>
+                <div class="row files--loaded files_loaded"></div>
             </article>
             <article class="referenceWebsites stepForm">
                 <h3>Reference Websites</h3>
@@ -61,7 +65,7 @@
                         <h5>Link</h5>
                         <input type="text" placeholder="www.goconsulting.com">
                         <h5>Description, instructions:</h5>
-                        <textarea type="text" placeholder="I like when they show their projects with a movement in the background images(?)"></textarea>
+                        <textarea data-pos='1' class='ta' type="text" placeholder="I like when they show their projects with a movement in the background images(?)"></textarea>
                     </div>
                 </div>
                 <button class="button2">Add Website +</button>
@@ -90,8 +94,12 @@
                 <h3>Products or services</h3>
                 <div class="row">
                     <p>If your company offers products or services please explain the way you would like to offer them, and then upload files that fully list the names, references, prices, etc. Please prepare the images in organized folders, compress them, and then upload all the product images in as few as possible .Zip or .Rar files.</p>
-                    <input type="file">
+                    <div class="file--loader">
+                        <p>Attach files here. Theres 2 files max limit.</p>
+                        <input data-step='' type="file" class="inp_loader">
+                    </div>
                 </div>
+                <div class="row files--loaded files_loaded"></div>
             </article>
             <article class="sections stepForm">
                 <h3>Sections</h3>
@@ -100,11 +108,15 @@
                 <div class="row">
                     <div class="description">
                         <h5>Description, instructions:</h5>
-                        <textarea type="text" placeholder="I like when they show their projects with a movement in the background images(?)"></textarea>
+                        <textarea data-pos='4' class='ta' type="text" placeholder="I like when they show their projects with a movement in the background images(?)"></textarea>
                     </div>
                     <div class="visualRef">
                         <h5>Visual Reference</h5>
-                        <input type="file">
+                        <div class="file--loader">
+                            <p>Attach files here. Theres 2 files max limit.</p>
+                            <input data-step='' type="file" class="inp_loader">
+                        </div>
+                        <div class="row files--loaded files_loaded"></div>
                     </div>
                 </div>
                 <button>add section</button>
@@ -121,15 +133,19 @@
                             <h5>Link</h5>
                             <input type="text" placeholder="www.goconsulting.com">
                             <h5>Description, instructions:</h5>
-                            <textarea type="text" placeholder="I like when they show their projects with a movement in the background images(?)"></textarea>
+                            <textarea data-pos='5' data-prop='textArea0' class='ta' type="text" placeholder="I like when they show their projects with a movement in the background images(?)"></textarea>
                         </div>
                         <button class="button2">Add Website +</button>
                     </div>
 
                     <div class="integrations">
                         <h3>Integrations</h3>
-                        <textarea type="text" placeholder="I need a market place where my dfas (?)"></textarea>
-                        <input type="file">
+                        <textarea data-pos='5' data-prop='textArea1' class='ta' type="text" placeholder="I need a market place where my dfas (?)"></textarea>
+                        <div class="file--loader">
+                            <p>Attach files here. Theres 2 files max limit.</p>
+                            <input data-step='' type="file" class="inp_loader">
+                        </div>
+                        <div class="row files--loaded files_loaded"></div>
                     </div>
                 </div>
 
@@ -137,21 +153,33 @@
                     <h3>User Management</h3>
                     <p>Qué quieres que vean tus usuarios loggeados exclusivamente?</p>
                     <div class="row">
-                        <textarea type="text" placeholder="I need a market place where my dfas (?)"></textarea>
-                        <input type="file">
+                        <textarea data-pos='5' data-prop='textArea2' class='ta' type="text" placeholder="I need a market place where my dfas (?)"></textarea>
+                        <div class="file--loader">
+                            <p>Attach files here. Theres 2 files max limit.</p>
+                            <input data-step='' type="file" class="inp_loader">
+                        </div>
                     </div>
+                    <div class="row files--loaded files_loaded"></div>
 
                     <p>Qué tipo de suscripciones tendrían?</p>
                     <div class="row">
-                        <textarea type="text" placeholder="I need a market place where my dfas (?)"></textarea>
-                        <input type="file">
+                        <textarea data-pos='5' data-prop='textArea3' class='ta' type="text" placeholder="I need a market place where my dfas (?)"></textarea>
+                        <div class="file--loader">
+                            <p>Attach files here. Theres 2 files max limit.</p>
+                            <input data-step='' type="file" class="inp_loader">
+                        </div>
                     </div>
+                    <div class="row files--loaded files_loaded"></div>
                     
                     <p>Tienes usuarios previos a importar?</p>
                     <div class="row">
-                        <textarea type="text" placeholder="I need a market place where my dfas (?)"></textarea>
-                        <input type="file">
+                        <textarea data-pos='5' data-prop='textArea4' class='ta' type="text" placeholder="I need a market place where my dfas (?)"></textarea>
+                        <div class="file--loader">
+                            <p>Attach files here. Theres 2 files max limit.</p>
+                            <input data-step='' type="file" class="inp_loader">
+                        </div>
                     </div>
+                    <div class="row files--loaded files_loaded"></div>
                 </div>
             </article>
 
@@ -162,5 +190,6 @@
         </section>
     </article>
     <script src="./index.js"></script>
+    <script src="./generalGuideline.js"></script>
 </body>
 </html>

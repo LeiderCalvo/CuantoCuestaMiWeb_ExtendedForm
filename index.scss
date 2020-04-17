@@ -215,9 +215,9 @@ button {
 
     .row:not([name="btnsNav"]){
         width: 100%;
-        &>*{
+        &>*:not(img){
             width: 45%;
-            *{
+            *:not(img){
                 width: 100%;
             }
         }
@@ -229,13 +229,58 @@ button {
         margin: 5px 0;
     }
 
-    textarea{
+    textarea, .file--loader{
         height: 200px;
+    }
+
+    .file--loader{
+        @include center();
+        border: 2px dashed #BBBBBB;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+        border-radius: 6px;
+        padding: 10px 20px;
+        input{
+            width: fit-content !important;
+            @include center();
+            margin-top: 20px;
+            &::-webkit-file-upload-button { visibility: hidden; }
+            &::before {
+                position: absolute;
+                margin: -10px 0 0 50px;
+                content: 'Pick Files';
+                border: 2px solid #7C33FF;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+                border-radius: 19px;
+                cursor: pointer;
+                padding: 10px;
+              }
+        }
+    }
+
+    .files--loaded{
+        flex-wrap: wrap;
+        margin-top: 20px;
+        .document{
+            width: 32% !important;
+            margin-bottom: 5px;
+            //height: 60px;
+            //overflow: hidden;
+
+            img{width: 60px;}
+            div{
+                margin-left: 10px;
+                h5{
+                    width: 70%;
+                    height: 1.5em;
+                    overflow: hidden;
+                }
+            }
+        }
     }
 
     ///////////////////////
     .generalGuideline{
-        textarea {
+        textarea, .file--loader{
             margin-top: 20px;
         }
     }
