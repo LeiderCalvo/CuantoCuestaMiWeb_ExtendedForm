@@ -60,32 +60,27 @@
             <article class="referenceWebsites stepForm">
                 <h3>Reference Websites</h3>
                 <p>Here you can paste the links of the websites that you wish to use as reference for your own website. Add more using the button below.</p>
-                <div class="row">
+                <div class="row" id='row_refWeb'>
                     <div class="website">
                         <h5>Link</h5>
-                        <input type="text" placeholder="www.goconsulting.com">
+                        <input type="text" class='link' data-pos='1' data-prop='link0' placeholder="www.goconsulting.com">
                         <h5>Description, instructions:</h5>
-                        <textarea data-pos='1' class='ta' type="text" placeholder="I like when they show their projects with a movement in the background images(?)"></textarea>
+                        <textarea data-pos='1' data-prop='textArea0' class='ta' type="text" placeholder="I like when they show their projects with a movement in the background images(?)"></textarea>
                     </div>
                 </div>
-                <button class="button2">Add Website +</button>
+                <button class="button2" id='btn_add_refWeb'>Add Website +</button>
             </article>
             <article class="row language stepForm">
                 <div class="main">
                     <h3>Main Language</h3>
-                    <select>
-                        <option value="English">English</option>
-                        <option value="Spanish">Spanish</option>
-                    </select>
+                    <select id="select_main_language"><option hidden>Seleccione el idioma</option></select>
                 </div>
                 <div class="secondary">
                     <h3>Secondary Languages</h3>
-                    <div class="row">
-                        <input type="checkbox" name="English">
-                    </div>
+                    <div class="row" id="row_secondary_language"></div>
                     <div class="row">
                         <p>Others?</p>
-                        <input type="text" placeholder="Write here if not listed
+                        <input id="inp_other_language" type="text" placeholder="Write here if not listed
                         ">
                     </div>
                 </div>
@@ -103,7 +98,7 @@
             </article>
             <article class="sections stepForm">
                 <h3>Sections</h3>
-                <p>Nos indicaste que necesitas realizar (número secciones) secciones en tu página, menciona qué te gustaría ver en cada una de ellas. Recuerda que puedes editar el número de secciones arriba (?).</p>
+                <p id="p_description_sections"></p>
                 <h5>1 / 10 (#Bloques Quote)</h5>
                 <div class="row">
                     <div class="description">
@@ -119,9 +114,11 @@
                         <div class="row files--loaded files_loaded"></div>
                     </div>
                 </div>
-                <button>add section</button>
-                <button class="next">next</button>
-                <button class="back">back</button>
+                <div class="btns">
+                    <button class="button">add section</button>
+                    <button class="next button2">next</button>
+                    <button class="back button2">back</button>
+                </div>
             </article>
             <article class="externalData stepForm">
                 <h3>External Data and Integrations</h3>
@@ -131,7 +128,7 @@
                         <h3>Payment Gateway</h3>
                         <div class="website">
                             <h5>Link</h5>
-                            <input type="text" placeholder="www.goconsulting.com">
+                            <input type="text" data-pos='5' data-prop='link0' class='link' placeholder="www.goconsulting.com">
                             <h5>Description, instructions:</h5>
                             <textarea data-pos='5' data-prop='textArea0' class='ta' type="text" placeholder="I like when they show their projects with a movement in the background images(?)"></textarea>
                         </div>

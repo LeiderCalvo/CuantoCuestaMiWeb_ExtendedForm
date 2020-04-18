@@ -69,8 +69,11 @@ window.addEventListener('load', function(){
         .then( response => response.json() )
         .then( r => { 
             userPrevResponse = r;
+            console.log(userPrevResponse);
             next(1, true);
             next(1);
+
+            detInfoUpdates();
         });
             
         //create OptionsFields
@@ -207,4 +210,8 @@ window.addEventListener('load', function(){
     document.querySelector('#detInfo--back').addEventListener('click', ()=> {
         if(detInfoProgressBarStep-1 > 0) next(detInfoProgressBarStep-1);
     });
+
+    function detInfoUpdates(){
+        p_description_sections.innerText = `Nos indicaste que necesitas realizar ${userPrevResponse.answers[3]['0']} secciones en tu página, menciona qué te gustaría ver en cada una de ellas. Recuerda que puedes editar el número de secciones arriba (?).`;
+    }
 });

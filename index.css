@@ -392,7 +392,7 @@ button {
 
 .detInfo--display .language .main {
   width: 35%;
-  height: 200px;
+  height: 250px;
   background: #FAFAFA;
   -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
           box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
@@ -417,7 +417,7 @@ button {
 
 .detInfo--display .language .secondary {
   width: 60%;
-  height: 200px;
+  height: 250px;
   background: #FAFAFA;
   -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
           box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
@@ -447,6 +447,48 @@ button {
           flex-direction: row;
 }
 
+.detInfo--display .language .secondary #row_secondary_language {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.detInfo--display .language .secondary #row_secondary_language .row {
+  width: 30%;
+  text-align: left;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.detInfo--display .language .secondary #row_secondary_language .row input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  margin-right: 5px;
+}
+
 .detInfo--display .language .secondary div:last-child p {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -463,6 +505,10 @@ button {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+}
+
+.detInfo--display .sections .btns {
+  margin: 0;
 }
 
 .detInfo--display .externalData .row {

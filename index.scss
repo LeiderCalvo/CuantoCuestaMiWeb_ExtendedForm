@@ -317,20 +317,40 @@ button {
     .language{
         .main{
             width: 35%;
-            height: 200px;
+            height: 250px;
             @include background();
             margin-right: 5%;
             @include center();
         }
         .secondary {
             width: 60%;
-            height: 200px;
+            height: 250px;
             @include background();
             @include center();
 
             .row{
                 width: 80%;
                 flex-direction: row;
+            }
+
+            #row_secondary_language {
+                @include center();
+                flex-direction: row;
+                flex-wrap: wrap;
+                width: fit-content;
+                .row {
+                    width: 30%;
+                    text-align: left;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    
+                    input{
+                        width: 20px;
+                        height: 20px;
+                        margin: 0;
+                        margin-right: 5px;
+                    }
+                }
             }
 
             div:last-child{
@@ -349,6 +369,10 @@ button {
         .row{
             margin-top: 20px;
             align-items: flex-start;
+        }
+        
+        .btns{
+            margin: 0;
         }
     }
 
