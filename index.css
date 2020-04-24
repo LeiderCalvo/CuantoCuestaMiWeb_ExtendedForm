@@ -500,11 +500,19 @@ button {
   width: 70%;
 }
 
-.detInfo--display .sections .row {
+.detInfo--display .sections #container_sections {
+  width: 100%;
+}
+
+.detInfo--display .sections #container_sections .row {
   margin-top: 20px;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+}
+
+.detInfo--display .sections #container_sections h5 {
+  text-align: left;
 }
 
 .detInfo--display .sections .btns {

@@ -52,7 +52,7 @@
                     <textarea data-pos='0' class='ta' placeholder="I need a market place where my dfas (?)"></textarea>
                     <div class="file--loader">
                         <p>Attach files here. Theres 2 files max limit.</p>
-                        <input data-step='' type="file" data-pos='0' data-max='2' class="inp_loader">
+                        <input type="file" data-pos='0' data-max='2' class="inp_loader">
                     </div>
                 </div>
                 <div class="row files--loaded files_loaded"></div>
@@ -73,15 +73,15 @@
             <article class="row language stepForm">
                 <div class="main">
                     <h3>Main Language</h3>
-                    <select id="select_main_language"><option hidden>Seleccione el idioma</option></select>
+                    <select id='select_main_language' class="link" data-pos="2" data-prop='main_language'><option hidden>Seleccione el idioma</option></select>
                 </div>
                 <div class="secondary">
                     <h3>Secondary Languages</h3>
                     <div class="row" id="row_secondary_language"></div>
                     <div class="row">
                         <p>Others?</p>
-                        <input id="inp_other_language" type="text" placeholder="Write here if not listed
-                        ">
+                        <input data-pos="2" data-prop='other_language' type="text" placeholder="Write here if not listed
+                        " class="link">
                     </div>
                 </div>
             </article>
@@ -91,7 +91,7 @@
                     <p>If your company offers products or services please explain the way you would like to offer them, and then upload files that fully list the names, references, prices, etc. Please prepare the images in organized folders, compress them, and then upload all the product images in as few as possible .Zip or .Rar files.</p>
                     <div class="file--loader">
                         <p>Attach files here. Theres 10 files max limit.</p>
-                        <input data-step='' type="file" data-pos='3' data-max='10' class="inp_loader">
+                        <input type="file" data-pos='3' data-max='10' class="inp_loader">
                     </div>
                 </div>
                 <div class="row files--loaded files_loaded"></div>
@@ -99,23 +99,25 @@
             <article class="sections stepForm">
                 <h3>Sections</h3>
                 <p id="p_description_sections"></p>
-                <h5>1 / 10 (#Bloques Quote)</h5>
-                <div class="row">
-                    <div class="description">
-                        <h5>Description, instructions:</h5>
-                        <textarea data-pos='4' class='ta' type="text" placeholder="I like when they show their projects with a movement in the background images(?)"></textarea>
-                    </div>
-                    <div class="visualRef">
-                        <h5>Visual Reference</h5>
-                        <div class="file--loader">
-                            <p>Attach files here. Theres 2 files max limit.</p>
-                            <input data-step='' type="file" data-pos='4' data-max='2' class="inp_loader">
+                <h5 id="h5_description_sections"></h5>
+                <div id='container_sections'>
+                    <section class="row">
+                        <div class="description">
+                            <h5>Description, instructions:</h5>
+                            <textarea data-pos='4' class='ta' type="text" placeholder="I like when they show their projects with a movement in the background images(?)"></textarea>
                         </div>
-                        <div class="row files--loaded files_loaded"></div>
-                    </div>
+                        <div class="visualRef">
+                            <h5>Visual Reference</h5>
+                            <div class="file--loader">
+                                <p>Attach files here. Theres 2 files max limit.</p>
+                                <input type="file" data-pos='4' data-max='2' class="inp_loader">
+                            </div>
+                            <div class="row files--loaded files_loaded"></div>
+                        </div>
+                    </section>
                 </div>
                 <div class="btns">
-                    <button class="button">add section</button>
+                    <button class="button" id='btn_add_sections'>add section</button>
                     <button class="next button2">next</button>
                     <button class="back button2">back</button>
                 </div>
@@ -126,13 +128,15 @@
                 <div class="row">
                     <div class="payment">
                         <h3>Payment Gateway</h3>
-                        <div class="website">
-                            <h5>Link</h5>
-                            <input type="text" data-pos='5' data-prop='link0' class='link' placeholder="www.goconsulting.com">
-                            <h5>Description, instructions:</h5>
-                            <textarea data-pos='5' data-prop='textArea0' class='ta' type="text" placeholder="I like when they show their projects with a movement in the background images(?)"></textarea>
+                        <div id="websites_payment">
+                            <div class="website">
+                                <h5>Link</h5>
+                                <input type="text" data-pos='5' data-prop='link0' class='link' placeholder="www.goconsulting.com">
+                                <h5>Description, instructions:</h5>
+                                <textarea data-pos='5' data-prop='textArea0' class='ta' type="text" placeholder="I like when they show their projects with a movement in the background images(?)"></textarea>
+                            </div>
                         </div>
-                        <button class="button2">Add Website +</button>
+                        <button id='btn_add_payment' class="button2">Add Website +</button>
                     </div>
 
                     <div class="integrations">
@@ -140,7 +144,7 @@
                         <textarea data-pos='5' data-prop='textArea1' class='ta' type="text" placeholder="I need a market place where my dfas (?)"></textarea>
                         <div class="file--loader">
                             <p>Attach files here. Theres 10 files max limit.</p>
-                            <input data-step='' type="file" data-prop='inpFile0' data-pos='5' data-max='10' class="inp_loader">
+                            <input type="file" data-prop='inpFile0' data-pos='5' data-max='10' class="inp_loader">
                         </div>
                         <div class="row files--loaded files_loaded"></div>
                     </div>
@@ -153,7 +157,7 @@
                         <textarea data-pos='5' data-prop='textArea2' class='ta' type="text" placeholder="I need a market place where my dfas (?)"></textarea>
                         <div class="file--loader">
                             <p>Attach files here. Theres 10 files max limit.</p>
-                            <input data-step='' type="file" data-pos='5' data-prop='inpFile1' data-max='10' class="inp_loader">
+                            <input type="file" data-pos='5' data-prop='inpFile1' data-max='10' class="inp_loader">
                         </div>
                     </div>
                     <div class="row files--loaded files_loaded"></div>
@@ -163,7 +167,7 @@
                         <textarea data-pos='5' data-prop='textArea3' class='ta' type="text" placeholder="I need a market place where my dfas (?)"></textarea>
                         <div class="file--loader">
                             <p>Attach files here. Theres 10 files max limit.</p>
-                            <input data-step='' type="file" data-pos='5' data-prop='inpFile2' data-max='10' class="inp_loader">
+                            <input type="file" data-pos='5' data-prop='inpFile2' data-max='10' class="inp_loader">
                         </div>
                     </div>
                     <div class="row files--loaded files_loaded"></div>
@@ -173,7 +177,7 @@
                         <textarea data-pos='5' data-prop='textArea4' class='ta' type="text" placeholder="I need a market place where my dfas (?)"></textarea>
                         <div class="file--loader">
                             <p>Attach files here. Theres 10 files max limit.</p>
-                            <input data-step='' type="file" data-pos='5' data-prop='inpFile3' data-max='10' class="inp_loader">
+                            <input type="file" data-pos='5' data-prop='inpFile3' data-max='10' class="inp_loader">
                         </div>
                     </div>
                     <div class="row files--loaded files_loaded"></div>
@@ -186,6 +190,12 @@
             </div>
         </section>
     </article>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
+    <script src="./firebaseInit.js"></script>
+    <script src="./database.js"></script>
+    <script src="./storage.js"></script>
     <script src="./index.js"></script>
     <script src="./generalGuideline.js"></script>
 </body>

@@ -1,3 +1,4 @@
+
 const plansDescription = [
     {
         plan: 'STARTER PLAN',
@@ -50,16 +51,17 @@ const quesionnaire = [
 ]
 const detailedInformationSteps = ['General Guideline', 'Reference Website', 'Languages', 'Products or Services', 'Sections', 'External Data'];
 
+var userPrevResponse = null;
+
 window.addEventListener('load', function(){
-    var userPrevResponse = null,
-        revProgressBarStep = 0,
+    var revProgressBarStep = 0,
         revProgressBarSteps = [],
         revNavItems = [],
         revOptions = [],
         revOptionsImgs = [],
         revOptionsPs = [],
 
-        detInfoProgressBarStep = 0,
+        detInfoProgressBarStep = 0
         detInfoProgressBarSteps = [],
         detInfoNavItems = [];
 
@@ -124,6 +126,7 @@ window.addEventListener('load', function(){
     function next(pos, isReview) {
         let barSteps = isReview? revProgressBarSteps : detInfoProgressBarSteps;
         let navItems = isReview? revNavItems : detInfoNavItems;
+        if(!isReview && pos < detInfoProgressBarStep && detInfoProgressBarStep===6) document.querySelector('#detInfo--next').innerHTML = 'Siguiente<img src="./imgs/nextArrow.svg" alt="">';
 
         barSteps.forEach( (p, i) => {
             p.classList.remove("is-active");
@@ -147,6 +150,7 @@ window.addEventListener('load', function(){
     function updateInfo_DetailedInfo(pos){
         detailedForms.forEach( form => form.style.display = 'none');
         detailedForms[detInfoProgressBarStep-1].style.display = 'flex';
+        if(detInfoProgressBarStep === 6) document.querySelector('#detInfo--next').innerHTML = 'Terminar';
     }
 
     var revTitle = document.querySelector('.title'),
@@ -212,6 +216,8 @@ window.addEventListener('load', function(){
     });
 
     function detInfoUpdates(){
-        p_description_sections.innerText = `Nos indicaste que necesitas realizar ${userPrevResponse.answers[3]['0']} secciones en tu página, menciona qué te gustaría ver en cada una de ellas. Recuerda que puedes editar el número de secciones arriba (?).`;
+        let sections_amoung = userPrevResponse.answers[3]['0'];
+        p_description_sections.innerText = `Nos indicaste que necesitas realizar ${sections_amoung} secciones en tu página, menciona qué te gustaría ver en cada una de ellas. Recuerda que puedes editar el número de secciones arriba (?).`;
+        h5_description_sections.innerText = `1 / ${sections_amoung} (#Bloques Quote)`;
     }
 });
