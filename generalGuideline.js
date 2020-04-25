@@ -50,7 +50,7 @@ window.addEventListener('load', function(){
                     files_loaded[i].appendChild(doc);
                 
                 reader.onload = e => {
-                    response[pos][prop] = response[pos][prop]? [...response[pos][prop], e.target.result] : [e.target.result];
+                    response[pos][prop] = response[pos][prop]? [...response[pos][prop], acceptedFiles[0]] : [acceptedFiles[0]];                    
                     
                     let p = this.document.querySelector(`#${'p'+id}`);
                     p.innerText = 'Cargado';
@@ -162,16 +162,76 @@ window.addEventListener('load', function(){
 
         section === 'payment'? websites_payment_amoung++ : websites_amoung++;
     }
-
-
+    
     let step = 0;
     document.querySelector('#detInfo--next').addEventListener('click', ()=> {
-        let obj = {};
-        obj[detailedInformationSteps[step].replace(' ', '')] = response[0];
-        this.console.log(obj);
-        this.console.log(JSON.stringify(obj));
-        /*fetch(`https://us-central1-quote-db5a2.cloudfunctions.net/widgets/updateUser?email=${userPrevResponse.email}&&obj=${JSON.stringify( obj )}`, {method: 'PUT'})
-            .then( resp => resp.text())
-            .catch( err => console.error(err) );*/
+        let obj = {},
+        prop = detailedInformationSteps[step].replace(' ', '');
+        obj[prop] = response[step];
+        this.console.log(obj[prop]);
+
+        valProp( obj[prop], prop, Object.keys( obj[prop] ), 0, obj[prop], obj => {
+            //obj[prop] =
+            this.console.log(obj);
+        });
+        step ++;
     });
+
+    function valProp(obj, prop, keys, keyIndex, temp, callBack) {
+        console.log(temp);
+        if ( keyIndex < keys.length ) {
+            if(keys[keyIndex].includes('inpFile')){
+                let path = userPrevResponse.id+'/extForm/'+prop+'/'+keys[keyIndex];
+                
+                upload(obj[keys[keyIndex]], 0, path, files => {
+                    console.log(files);
+                    temp[ keys[keyIndex] ] = files;
+                    valProp(obj, prop, keys, keyIndex+1, temp, callBack);
+                });
+            }else{
+                valProp(obj, prop, keys, keyIndex+1, temp, callBack );
+            }
+        }else{
+            callBack( temp );
+        }
+    }
+
+    function upload(files, fileIndex, path, callBack) {
+        console.log(fileIndex);
+        let file = files[fileIndex];
+        uploadFile(path, file.name, file, { contentType: file.type+'' }, response => {
+            this.console.log(response);
+            files[fileIndex] = response;
+            if (fileIndex+1 < files.length){
+                return upload(files, fileIndex+1, path, callBack);
+            }else {
+                callBack( files );
+            }
+        });
+    }
+    
 });
+
+/*
+    for (const key in obj[prop]) {
+            if (obj[prop].hasOwnProperty(key) && key.includes('inpFile')) {
+
+                for (let i = 0; i < obj[prop][key].length;) {
+                    let path = userPrevResponse.id+'/extForm/'+prop+'/'+key;
+                    let file = obj[prop][key][i];
+
+                    uploadFile(path, file.name, file, {
+                        contentType: file.type+''
+                    }, response => {
+                        this.console.log(response);
+                        obj[prop][key][i] = response;
+                        i++;
+                    });
+
+                  this.console.log('classic for volta', i);
+                } 
+                this.console.log('end classic for');
+            }
+            this.console.log('in for volta');
+        }
+*/

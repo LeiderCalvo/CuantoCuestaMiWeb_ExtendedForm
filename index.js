@@ -71,6 +71,8 @@ window.addEventListener('load', function(){
         .then( response => response.json() )
         .then( r => { 
             userPrevResponse = r;
+            let id = r.email.replace('@',''); id = id.replace('.','');
+            userPrevResponse.id = id;
             console.log(userPrevResponse);
             next(1, true);
             next(1);
