@@ -1,6 +1,7 @@
 var storage = firebase.storage();
 
-/*const uploadFile = ( path, name, file, callBack ) => {
+/*
+const uploadFile = ( path, name, file, callBack ) => {
     let ref = storage.ref().child(path+'/'+name);
   
     ref.putString( file, 'data_url' )
@@ -8,7 +9,8 @@ var storage = firebase.storage();
       snap.ref.getDownloadURL().then( downloadURL  => 
         callBack(downloadURL) )
     );    
-  }*/
+  }
+*/
 
 const uploadFile = (path, name, file, metadata, callBack) => {
     let ref = storage.ref().child(path+'/'+name);

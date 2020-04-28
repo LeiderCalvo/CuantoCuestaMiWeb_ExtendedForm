@@ -1,6 +1,6 @@
 const imageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
-window.addEventListener('load', function(){
+//window.addEventListener('load', function(){
     
     let response = [{},{},{},{},{},{}];
 
@@ -9,7 +9,6 @@ window.addEventListener('load', function(){
             let pos = parseInt(link.dataset.pos),
                 prop = link.dataset.prop? link.dataset.prop : 'link';
             response[pos][prop] = e.target.value;
-            this.console.log(response);
         }
 
         document.querySelectorAll('.link').forEach( link => 
@@ -99,7 +98,6 @@ window.addEventListener('load', function(){
                     }else{
                         response[2]['secondary_languajes'] = response[2]['secondary_languajes'].filter( val => val !== e.target.name )
                     }
-                    this.console.log(response);
                 });
             })
         })();
@@ -122,7 +120,7 @@ window.addEventListener('load', function(){
                     <h5>Visual Reference</h5>
                     <div class="file--loader">
                         <p>Attach files here. Theres 2 files max limit.</p>
-                        <input type="file" id='inpt_file_sections${id}' data-pos='4' data-prop='inptFile${sections_amoung}' data-max='2' class="inp_loader">
+                        <input type="file" id='inpt_file_sections${id}' data-pos='4' data-prop='inpFile${sections_amoung}' data-max='2' class="inp_loader">
                     </div>
                     <div id='files_loaded_sections${id}' class="row files--loaded files_loaded"></div>
                 </div>`;
@@ -163,28 +161,43 @@ window.addEventListener('load', function(){
         section === 'payment'? websites_payment_amoung++ : websites_amoung++;
     }
     
-    let step = 0;
-    document.querySelector('#detInfo--next').addEventListener('click', ()=> {
-        let obj = {},
-        prop = detailedInformationSteps[step].replace(' ', '');
-        obj[prop] = response[step];
-        this.console.log(obj[prop]);
+    //let step = 0;
+    //let uploading = false;
+    //document.querySelector('#detInfo--next').addEventListener('click', ()=> {
+    const triggerUploading = () => {
+        this.console.log(detInfoProgressBarStep)
+        if(detInfoUploading===false){
+            uploadingNextBtn(true);
+            let obj = {},
+            prop = detailedInformationSteps[detInfoProgressBarStep-1].replace(' ', '');
+            obj[prop] = response[detInfoProgressBarStep-1];
 
-        valProp( obj[prop], prop, Object.keys( obj[prop] ), 0, obj[prop], obj => {
-            //obj[prop] =
             this.console.log(obj);
-        });
-        step ++;
-    });
+    
+            valProp( obj[prop], prop, Object.keys( obj[prop] ), 0, obj[prop], response => {
+                obj[prop] = response;
+                writeData('requests/'+userPrevResponse.id, obj, e => {
+                    e? uploadingNextBtn(false) : this.alert('fallo cargando los archivos, porfavor reintente');
+                });
+            });
+        }else{
+            return;
+        }
+    };
+
+    function uploadingNextBtn(val) {
+        detInfoUploading = val;
+        if(val === false) alreadyUploaded[detInfoProgressBarStep-1] = true;
+        document.querySelector('#detInfo--next').innerHTML = val? 'uploading' : detInfoProgressBarStep === 6? 'terminar' : 'next';
+        document.querySelector('#detInfo--next').style.opacity = val? .3 : 1;
+    }
 
     function valProp(obj, prop, keys, keyIndex, temp, callBack) {
-        console.log(temp);
         if ( keyIndex < keys.length ) {
             if(keys[keyIndex].includes('inpFile')){
                 let path = userPrevResponse.id+'/extForm/'+prop+'/'+keys[keyIndex];
                 
                 upload(obj[keys[keyIndex]], 0, path, files => {
-                    console.log(files);
                     temp[ keys[keyIndex] ] = files;
                     valProp(obj, prop, keys, keyIndex+1, temp, callBack);
                 });
@@ -197,10 +210,8 @@ window.addEventListener('load', function(){
     }
 
     function upload(files, fileIndex, path, callBack) {
-        console.log(fileIndex);
         let file = files[fileIndex];
         uploadFile(path, file.name, file, { contentType: file.type+'' }, response => {
-            this.console.log(response);
             files[fileIndex] = response;
             if (fileIndex+1 < files.length){
                 return upload(files, fileIndex+1, path, callBack);
@@ -210,7 +221,7 @@ window.addEventListener('load', function(){
         });
     }
     
-});
+//});
 
 /*
     for (const key in obj[prop]) {

@@ -51,7 +51,10 @@ const quesionnaire = [
 ]
 const detailedInformationSteps = ['General Guideline', 'Reference Website', 'Languages', 'Products or Services', 'Sections', 'External Data'];
 
-var userPrevResponse = null;
+var userPrevResponse = null,
+    detInfoUploading = false,
+    detInfoProgressBarStep = 0,
+    alreadyUploaded = [false,false,false,false,false,false];
 
 window.addEventListener('load', function(){
     var revProgressBarStep = 0,
@@ -61,7 +64,7 @@ window.addEventListener('load', function(){
         revOptionsImgs = [],
         revOptionsPs = [],
 
-        detInfoProgressBarStep = 0
+        
         detInfoProgressBarSteps = [],
         detInfoNavItems = [];
 
@@ -128,7 +131,7 @@ window.addEventListener('load', function(){
     function next(pos, isReview) {
         let barSteps = isReview? revProgressBarSteps : detInfoProgressBarSteps;
         let navItems = isReview? revNavItems : detInfoNavItems;
-        if(!isReview && pos < detInfoProgressBarStep && detInfoProgressBarStep===6) document.querySelector('#detInfo--next').innerHTML = 'Siguiente<img src="./imgs/nextArrow.svg" alt="">';
+        //if(!isReview && pos < detInfoProgressBarStep && detInfoProgressBarStep===6) document.querySelector('#detInfo--next').innerHTML = 'Upload<img src="./imgs/nextArrow.svg" alt="">';
 
         barSteps.forEach( (p, i) => {
             p.classList.remove("is-active");
@@ -152,7 +155,7 @@ window.addEventListener('load', function(){
     function updateInfo_DetailedInfo(pos){
         detailedForms.forEach( form => form.style.display = 'none');
         detailedForms[detInfoProgressBarStep-1].style.display = 'flex';
-        if(detInfoProgressBarStep === 6) document.querySelector('#detInfo--next').innerHTML = 'Terminar';
+        //if(detInfoProgressBarStep === 6) document.querySelector('#detInfo--next').innerHTML = 'Terminar';
     }
 
     var revTitle = document.querySelector('.title'),
@@ -209,12 +212,23 @@ window.addEventListener('load', function(){
         if(revProgressBarStep-1 > 0) next(revProgressBarStep-1, true);
     });
 
-    document.querySelector('#detInfo--next').addEventListener('click', ()=> {
-        if(detInfoProgressBarStep+1 <= 6) next(detInfoProgressBarStep+1);
+    var next_btn = document.querySelector('#detInfo--next');
+    next_btn.addEventListener('click', ()=> {
+        if(alreadyUploaded[detInfoProgressBarStep-1]){
+            if(detInfoProgressBarStep+1 <= 6 && detInfoUploading===false) {
+                next(detInfoProgressBarStep+1);
+                next_btn.innerHTML = 'Upload<img src="./imgs/nextArrow.svg" alt="">';
+            }else{
+                this.console.log('final');
+            }
+        }else{
+            triggerUploading();
+        }
     });
 
     document.querySelector('#detInfo--back').addEventListener('click', ()=> {
-        if(detInfoProgressBarStep-1 > 0) next(detInfoProgressBarStep-1);
+        next_btn.innerHTML = 'Next<img src="./imgs/nextArrow.svg" alt="">';
+        if(detInfoProgressBarStep-1 > 0 && detInfoUploading===false) next(detInfoProgressBarStep-1);
     });
 
     function detInfoUpdates(){

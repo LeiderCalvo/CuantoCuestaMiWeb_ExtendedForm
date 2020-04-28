@@ -378,8 +378,14 @@ button {
             }
         }
         
-        .btns{
+        /*.btns{
             margin: 0;
+        }*/
+
+        #btn_add_sections{
+            border-radius: 20px;
+            margin-top: 20px;
+            align-self: center;
         }
     }
 

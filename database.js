@@ -1,9 +1,7 @@
-var database = firebase.database();
+var db = firebase.firestore();
 
-function writeUserData(userId, name, email, imageUrl) {
-    firebase.database().ref('users/' + userId).set({
-      username: name,
-      email: email,
-      profile_picture : imageUrl
-    });
-  }
+function writeData(path, obj, callback) {
+  db.doc(path).update(obj)
+  .then( e => callback(true))
+  .catch( e => callback(false));
+}
