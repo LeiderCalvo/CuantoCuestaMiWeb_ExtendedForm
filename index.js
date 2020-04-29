@@ -70,7 +70,7 @@ window.addEventListener('load', function(){
 
     ( () => {
         //get previous answers
-        fetch(`https://us-central1-quote-db5a2.cloudfunctions.net/widgets/getUserDocument?email=leidercalvo@gmail.com`)
+        /*fetch(`https://us-central1-quote-db5a2.cloudfunctions.net/widgets/getUserDocument?email=leidercalvo@gmail.com`)
         .then( response => response.json() )
         .then( r => { 
             userPrevResponse = r;
@@ -81,6 +81,18 @@ window.addEventListener('load', function(){
             next(1);
 
             detInfoUpdates();
+        });*/
+        let email = 'leidercalvo@gmail.com';
+        let id = email.replace('@',''); id = id.replace('.','');
+        getData('requests/'+id, doc => {
+            if(doc !== null){
+                userPrevResponse = doc;
+                userPrevResponse.id = id;
+                console.log(userPrevResponse);
+                next(1, true);
+                next(1);
+                detInfoUpdates();
+            }
         });
             
         //create OptionsFields
