@@ -82,7 +82,8 @@ window.addEventListener('load', function(){
 
             detInfoUpdates();
         });*/
-        let email = emailUserTosearch.innerText;
+        var urlParams = new URLSearchParams(window.location.search);
+        let email = urlParams.get('email');
         let id = email.replace('@',''); id = id.replace('.','');
         getData('requests/'+id, doc => {
             if(doc !== null){
