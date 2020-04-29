@@ -82,7 +82,7 @@ window.addEventListener('load', function(){
 
             detInfoUpdates();
         });*/
-        let email = 'leidercalvo@gmail.com';
+        let email = emailUserTosearch.innerText;
         let id = email.replace('@',''); id = id.replace('.','');
         getData('requests/'+id, doc => {
             if(doc !== null){
@@ -92,6 +92,8 @@ window.addEventListener('load', function(){
                 next(1, true);
                 next(1);
                 detInfoUpdates();
+            }else{
+                this.console.log('got to first form')
             }
         });
             
