@@ -9,6 +9,7 @@ const imageTypes = ['image/gif', 'image/jpeg', 'image/png'];
             let pos = parseInt(link.dataset.pos),
                 prop = link.dataset.prop? link.dataset.prop : 'link';
             response[pos][prop] = e.target.value;
+            AllowReLoad()
         }
 
         document.querySelectorAll('.link').forEach( link => 
@@ -20,6 +21,7 @@ const imageTypes = ['image/gif', 'image/jpeg', 'image/png'];
             let pos = parseInt(textArea.dataset.pos),
                 prop = textArea.dataset.prop? textArea.dataset.prop : 'textArea';
             response[pos][prop] = e.target.value;
+            AllowReLoad()
         }
         
         document.querySelectorAll('.ta').forEach( textArea => 
@@ -37,6 +39,7 @@ const imageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
                 
             inp_file.onchange = e => {
+                AllowReLoad()
                 let acceptedFiles = e.target.files;
                 var reader = new FileReader();
 
@@ -93,6 +96,7 @@ const imageTypes = ['image/gif', 'image/jpeg', 'image/png'];
                 row_secondary_language.appendChild(option);
 
                 this.document.querySelector('#check_languajes'+id).addEventListener('change', e => {
+                    AllowReLoad()
                     if(e.target.checked){
                         response[2]['secondary_languajes'] = response[2]['secondary_languajes']? [...response[2]['secondary_languajes'], e.target.name] : [e.target.name];
                     }else{
@@ -107,6 +111,7 @@ const imageTypes = ['image/gif', 'image/jpeg', 'image/png'];
     //Sections
         let sections_amoung = 1;
         btn_add_sections.onclick = e => {
+            AllowReLoad()
             let id = Math.random().toString(36).substr(2, 9),
                 section = this.document.createElement('section');
 
@@ -144,7 +149,7 @@ const imageTypes = ['image/gif', 'image/jpeg', 'image/png'];
     function add_website(section, parent, pos, amoung_ref) {
         let id = Math.random().toString(36).substr(2, 9),
             div = this.document.createElement('div');
-
+            AllowReLoad()
         div.classList.add('website');
         div.innerHTML = `<h5>Link</h5>
         <input type="text" id='link_${section}${id}' data-prop='link${amoung_ref}' data-pos='${pos}' placeholder="www.goconsulting.com">
@@ -165,14 +170,11 @@ const imageTypes = ['image/gif', 'image/jpeg', 'image/png'];
     //let uploading = false;
     //document.querySelector('#detInfo--next').addEventListener('click', ()=> {
     const triggerUploading = () => {
-        this.console.log(detInfoProgressBarStep)
         if(detInfoUploading===false){
             uploadingNextBtn(true);
             let obj = {},
             prop = detailedInformationSteps[detInfoProgressBarStep-1].replace(' ', '');
             obj[prop] = response[detInfoProgressBarStep-1];
-
-            this.console.log(obj);
     
             valProp( obj[prop], prop, Object.keys( obj[prop] ), 0, obj[prop], response => {
                 obj[prop] = response;
@@ -211,6 +213,15 @@ const imageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
     function upload(files, fileIndex, path, callBack) {
         let file = files[fileIndex];
+        if(typeof file === 'string'){
+            if (fileIndex+1 < files.length){
+                return upload(files, fileIndex+1, path, callBack);
+            }else {
+                callBack( files );
+            }
+            return;
+        }
+
         uploadFile(path, file.name, file, { contentType: file.type+'' }, response => {
             files[fileIndex] = response;
             if (fileIndex+1 < files.length){
@@ -219,6 +230,12 @@ const imageTypes = ['image/gif', 'image/jpeg', 'image/png'];
                 callBack( files );
             }
         });
+    }
+
+
+    function AllowReLoad () {
+        alreadyUploaded[detInfoProgressBarStep-1] = false;
+        document.querySelector('#detInfo--next').innerHTML = 'Upload<img src="./imgs/nextArrow.svg" alt="">';
     }
     
 //});

@@ -234,12 +234,23 @@ window.addEventListener('load', function(){
                 next(detInfoProgressBarStep+1);
                 next_btn.innerHTML = 'Upload<img src="./imgs/nextArrow.svg" alt="">';
             }else{
-                this.console.log('final');
+                finalScreen();
             }
         }else{
             triggerUploading();
         }
     });
+
+
+    function finalScreen(){
+        console.log(response);
+        detailedForms.forEach( form => form.style.display = 'none');
+        document.querySelector('.detInfo').innerHTML = `
+            <h2>Gracias por completar el proceso</h2>
+            <h3>Tu orden ha sido generada bajo el plan ${userPrevResponse.plan}, por valor de: € ${userPrevResponse.price}</h3>
+        `;
+    }
+
 
     document.querySelector('#detInfo--back').addEventListener('click', ()=> {
         next_btn.innerHTML = 'Next<img src="./imgs/nextArrow.svg" alt="">';
