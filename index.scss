@@ -135,6 +135,13 @@ button {
     }
 }
 
+.title {
+    margin: 20px 0;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 40px;
+}
+
 .review {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     background-color: #FAFAFA;
@@ -165,12 +172,6 @@ button {
     }
 
     .review--display {
-        .title {
-            margin: 20px 0;
-            font-weight: 600;
-            font-size: 36px;
-            line-height: 40px;
-        }
 
         .options .option .option--name{
             position: absolute;
@@ -421,4 +422,17 @@ button {
         }
     }
 
+}
+
+.final{
+    height: 500px;
+    .title {
+        color: #7C33FF;
+    }
+
+    h3{
+        strong{
+            color: #7C33FF;
+        }
+    }
 }

@@ -252,9 +252,11 @@ window.addEventListener('load', function(){
     function finalScreen(){
         console.log(response);
         detailedForms.forEach( form => form.style.display = 'none');
-        document.querySelector('.detInfo').innerHTML = `
-            <h2>Gracias por completar el proceso</h2>
-            <h3>Tu orden ha sido generada bajo el plan ${userPrevResponse.plan}, por valor de: € ${userPrevResponse.price}</h3>
+        let detInfo = document.querySelector('.detInfo');
+        detInfo.classList.add('final');
+        detInfo.innerHTML = `
+            <h1 class='title'>Gracias por completar el proceso</h1>
+            <h3>Tu orden ha sido generada bajo el plan <strong>${userPrevResponse.plan}</strong>, por valor de: <strong>€ ${userPrevResponse.price}</strong></h3>
         `;
     }
 
@@ -269,4 +271,6 @@ window.addEventListener('load', function(){
         p_description_sections.innerText = `Nos indicaste que necesitas realizar ${sections_amoung} secciones en tu página, menciona qué te gustaría ver en cada una de ellas. Recuerda que puedes editar el número de secciones arriba (?).`;
         h5_description_sections.innerText = `1 / ${sections_amoung} (#Bloques Quote)`;
     }
+    
+    edit_answers.addEventListener('click', e => window.location.href = 'https://goconsultingeurope.com/quote/');
 });

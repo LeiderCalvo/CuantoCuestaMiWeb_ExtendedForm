@@ -163,6 +163,13 @@ button {
   border: solid 2px #9458FF;
 }
 
+.title {
+  margin: 20px 0;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 40px;
+}
+
 .review {
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
@@ -197,13 +204,6 @@ button {
 .review .row .hide .cero {
   -webkit-transform: rotate(-90deg) !important;
           transform: rotate(-90deg) !important;
-}
-
-.review .review--display .title {
-  margin: 20px 0;
-  font-weight: 600;
-  font-size: 36px;
-  line-height: 40px;
 }
 
 .review .review--display .options .option .option--name {
@@ -563,5 +563,17 @@ button {
 
 .detInfo--display .externalData .userManagement p {
   margin-top: 20px;
+}
+
+.final {
+  height: 500px;
+}
+
+.final .title {
+  color: #7C33FF;
+}
+
+.final h3 strong {
+  color: #7C33FF;
 }
 /*# sourceMappingURL=index.css.map */
