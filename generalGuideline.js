@@ -96,11 +96,21 @@ const imageTypes = ['image/gif', 'image/jpeg', 'image/png'];
                 row_secondary_language.appendChild(option);
 
                 this.document.querySelector('#check_languajes'+id).addEventListener('change', e => {
+                    e.preventDefault();
                     AllowReLoad()
+                    let currentLanguages = response[2]['secondary_languajes']? response[2]['secondary_languajes'].length : 0;
+                    let allowedLanguages = userPrevResponse.answers[3][2] - 1;
+
                     if(e.target.checked){
-                        response[2]['secondary_languajes'] = response[2]['secondary_languajes']? [...response[2]['secondary_languajes'], e.target.name] : [e.target.name];
+                        if( currentLanguages < allowedLanguages){
+                            response[2]['secondary_languajes'] = response[2]['secondary_languajes']? [...response[2]['secondary_languajes'], e.target.name] : [e.target.name];
+                            e.target.checked = true;
+                        }else{
+                            e.target.checked = false;
+                        }
                     }else{
-                        response[2]['secondary_languajes'] = response[2]['secondary_languajes'].filter( val => val !== e.target.name )
+                        response[2]['secondary_languajes'] = response[2]['secondary_languajes'].filter( val => val !== e.target.name );
+                        checked = false;
                     }
                 });
             })
@@ -111,35 +121,40 @@ const imageTypes = ['image/gif', 'image/jpeg', 'image/png'];
     //Sections
         let sections_amoung = 1;
         btn_add_sections.onclick = e => {
-            AllowReLoad()
-            let id = Math.random().toString(36).substr(2, 9),
-                section = this.document.createElement('section');
+            if(sections_amoung < userPrevResponse.answers[3][0]){
 
-            section.classList.add('row');
-            section.innerHTML = `
-                <div class="description">
-                    <h5>Description, instructions:</h5>
-                    <textarea id='ta_sections${id}' data-pos='4' data-prop='textArea${sections_amoung}' class='ta' type="text" placeholder="I like when they show their projects with a movement in the background images(?)"></textarea>
-                </div>
-                <div class="visualRef">
-                    <h5>Visual Reference</h5>
-                    <div class="file--loader">
-                        <p>Attach files here. Theres 2 files max limit.</p>
-                        <input type="file" id='inpt_file_sections${id}' data-pos='4' data-prop='inpFile${sections_amoung}' data-max='2' class="inp_loader">
+                AllowReLoad()
+                let id = Math.random().toString(36).substr(2, 9),
+                    section = this.document.createElement('section');
+    
+                section.classList.add('row');
+                section.innerHTML = `
+                    <div class="description">
+                        <h5>Description, instructions:</h5>
+                        <textarea id='ta_sections${id}' data-pos='4' data-prop='textArea${sections_amoung}' class='ta' type="text" placeholder="I like when they show their projects with a movement in the background images(?)"></textarea>
                     </div>
-                    <div id='files_loaded_sections${id}' class="row files--loaded files_loaded"></div>
-                </div>`;
-            container_sections.appendChild(section);
+                    <div class="visualRef">
+                        <h5>Visual Reference</h5>
+                        <div class="file--loader">
+                            <p>Attach files here. Theres 2 files max limit.</p>
+                            <input type="file" id='inpt_file_sections${id}' data-pos='4' data-prop='inpFile${sections_amoung}' data-max='2' class="inp_loader">
+                        </div>
+                        <div id='files_loaded_sections${id}' class="row files--loaded files_loaded"></div>
+                    </div>`;
+                container_sections.appendChild(section);
+    
+                let ta = this.document.querySelector('#ta_sections'+id);
+                ta.addEventListener('change', e => textArea_change_listener(ta, e));
+                files_loaded.push( this.document.querySelector('#files_loaded_sections'+id) );
+    
+                let inpFile = this.document.querySelector('#inpt_file_sections'+id);
+                file_loaders.push(inpFile);
+                inpFile_change_listener(inpFile, (files_loaded.length-1));
+    
+                sections_amoung++;
 
-            let ta = this.document.querySelector('#ta_sections'+id);
-            ta.addEventListener('change', e => textArea_change_listener(ta, e));
-            files_loaded.push( this.document.querySelector('#files_loaded_sections'+id) );
-
-            let inpFile = this.document.querySelector('#inpt_file_sections'+id);
-            file_loaders.push(inpFile);
-            inpFile_change_listener(inpFile, (files_loaded.length-1));
-
-            sections_amoung++;
+                if(sections_amoung >= userPrevResponse.answers[3][0]) btn_add_sections.style.opacity = '0.5';
+            }
         }
 
     //External data

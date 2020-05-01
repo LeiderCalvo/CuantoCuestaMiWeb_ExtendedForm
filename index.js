@@ -93,6 +93,7 @@ window.addEventListener('load', function(){
                 next(1, true);
                 next(1);
                 detInfoUpdates();
+                checkExternalDataContent();
             }else{
                 this.console.log('got to first form')
             }
@@ -140,6 +141,12 @@ window.addEventListener('load', function(){
             document.querySelector(isReview?'.review--progress':'.detInfo--progress').appendChild( progressStep );
             isReview? revProgressBarSteps.push( progressStep ):detInfoProgressBarSteps.push( progressStep );
         });
+    }
+
+    function checkExternalDataContent() {
+        if(userPrevResponse.answers[5][0] === '') document.querySelector('.payment').style.display = 'none';
+        if(userPrevResponse.answers[5][1] === '') document.querySelector('.integrations').style.display = 'none';
+        if(userPrevResponse.answers[5][2] === '') document.querySelector('.userManagement').style.display = 'none';
     }
 
 
